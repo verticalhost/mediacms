@@ -1,0 +1,13 @@
+<!-- ...existing code... -->
+<div>
+    <h3>Gamification</h3>
+    <p>Points: {{ user.points }}</p>
+    <p>Level: {{ user.level }}</p>
+    <p>Badges:</p>
+    <ul>
+        {% for badge in user.badges.all %}
+            <li>{{ badge.name }}: {{ badge.description }}</li>
+        {% endfor %}
+    </ul>
+</div>
+<!-- ...existing code... -->
