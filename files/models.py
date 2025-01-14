@@ -598,7 +598,14 @@ class Media(models.Model):
             profiles = [p.id for p in profiles]
             tasks.chunkize_media.delay(self.friendly_token, profiles, force=force)
         else:
-            for profile in profiles:
+            for profile in profiles:class User(AbstractUser):
+    points = models.IntegerField(default=0)
+    level = models.IntegerField(default=1)
+    badges = models.ManyToManyField('Badge')class Badge(models.Model):
+    name = models.CharField(max_length=100)
+    description = models.TextField()
+    icon = models.ImageField(upload_to='badges/')
+    points_required = models.IntegerField()
                 if profile.extension != "gif":
                     if self.video_height and self.video_height < profile.resolution:
                         if profile.resolution not in settings.MINIMUM_RESOLUTIONS_TO_ENCODE:
