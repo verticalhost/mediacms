@@ -6,6 +6,9 @@ class User(AbstractUser):
     points = models.IntegerField(default=0)
     level = models.IntegerField(default=1)
     badges = models.ManyToManyField('Badge', blank=True)
+    
+    def is_gamification_working(self):
+        return self.points >= 0 and self.level >= 1 and self.badges.exists()
     # ...existing code...
 
 class Badge(models.Model):
