@@ -15,6 +15,9 @@ class User(AbstractUser):
             return f"Points: {self.points}, Level: {self.level}, Badges: {self.badges.count()}"
         else:
             return "Gamification system is not working properly."
+    
+    def display_cumulative_points(self):
+        return f"Cumulative Points: {self.points}"
     # ...existing code...
 
 class Badge(models.Model):
